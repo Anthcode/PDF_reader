@@ -6,6 +6,7 @@ const AddPdf = () => {
   const [signature, setSignature] = useState('');
 
   const handleSubmit = async (e) => {
+    setSignature('');
     console.log(e.target.files[0]);
     const file = e.target.files[0];
     const fileData = await file.arrayBuffer();
@@ -29,22 +30,30 @@ const AddPdf = () => {
 
       const fields = form.getFields();
       console.log('Fields:', fields);
+    if (!fields.length>0) {
+      setSignature('Brak podpisu')
+      console.log('jest false',fields)
+    }
 
       fields.forEach((field) => {
         const name = field.getName();
-
+        setSignature(name)
         console.log('Field name:', name);
       });
+      
     } catch (error) {
       console.error('Błąd odczytu pliku PDF:', error);
     }
   };
 
   return (
+    <>
     <form>
       <input type="file" onChange={handleSubmit} />
       <button onClick={readPDFData}>ok</button>
     </form>
+    <h2>{signature}</h2>
+    </>
   );
 };
 
