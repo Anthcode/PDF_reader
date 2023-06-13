@@ -4,7 +4,7 @@ import AddPdf from './comp/AddPdf'
 
 export default function App() {
   return (
-    <div>
+    <div className="App">
       <AddPdf />
     </div>
   );
