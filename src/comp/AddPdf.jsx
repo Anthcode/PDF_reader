@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, PDFSignature } from 'pdf-lib';
 
 const AddPdf = () => {
   const [pdfData, setPdfData] = useState(null);
@@ -28,6 +28,9 @@ const AddPdf = () => {
       const form = pdfDoc.getForm();
       console.log(form);
 
+     const sig = PDFSignature.acroField
+    console.log('poka sign', sig)
+
       const fields = form.getFields();
       console.log('Fields:', fields);
     if (!fields.length>0) {
@@ -38,6 +41,7 @@ const AddPdf = () => {
       fields.forEach((field) => {
         const name = field.getName();
         setSignature(name)
+        
         console.log('Field name:', name);
       });
       
