@@ -40,7 +40,7 @@ const AddPdf = () => {
 
       fields.forEach((field) => {
         const name = field.getName();
-        setSignature(name)
+        setSignature("Ma podpis: "+name)
         
         console.log('Field name:', name);
       });
